@@ -1,0 +1,85 @@
+Hi, I am Dhinakaran,
+I am currently pursuing my B.Tech 4th year in CSE with a specialization in Artificial Intelligence and Machine Learning. Today, I will explain the approach and process I followed to build the AI Video Storytelling Tool as part of this assignment.
+
+Understanding the Objective
+The goal of this project was to create a tool where users can upload their video footage, describe a story idea through a prompt, and have the system:
+
+Analyze the videos to extract meaningful content.
+Generate transcripts for searchability.
+Tag visual elements using AI vision tools.
+Use this data to create a cohesive story based on the provided prompt.
+I developed this system as a web application using Python for the backend and HTML with JavaScript for the frontend. Here's how I approached each part of the problem:
+
+Step 1: Video Uploading
+The first step was to create an interface where users can upload multiple videos. I used Flask for the backend and designed an HTML form with an option to upload files.
+
+I ensured the form accepts only video files (accept="video/*") and allows multiple files to be uploaded at once.
+On the backend, the uploaded files are temporarily stored in a folder for processing.
+Step 2: Speech-to-Text Transcription
+To make the content in the videos searchable, I extracted the audio and converted it into text. For this, I used:
+
+MoviePy to extract audio from the video.
+Whisper (by OpenAI) to perform speech-to-text transcription. Whisper provides accurate transcriptions even in noisy conditions, which makes it ideal for this use case.
+By processing the audio track, I was able to generate a transcript for every uploaded video.
+
+Step 3: Vision Tagging
+Next, I tagged visual elements in the video. This step involved analyzing frames of the video and identifying objects, scenes, or activities.
+
+I used Google Vision API for this task. It provides pre-trained models capable of detecting labels in images.
+I extracted one frame per second from each video using MoviePy and sent these frames to the Vision API.
+The API returned tags like "beach," "dog," or "sports," which were stored for later use.
+These tags provide a quick summary of the visual content in the videos.
+
+Step 4: Story Creation
+With transcripts and tags in hand, I moved to the storytelling part.
+
+I integrated OpenAI's GPT API, which is perfect for generating narratives based on structured data.
+The user provides a prompt describing their story idea.
+I combined this prompt with the transcriptions and tags as input to GPT, asking it to generate a cohesive story.
+The output was a natural, human-readable narrative connecting the elements from the videos.
+Step 5: Building the Web Interface
+I created a user-friendly interface using HTML, CSS, and JavaScript.
+
+The form allows users to upload videos and input a prompt.
+When the user submits, the data is sent to the Flask backend via AJAX for processing.
+Once the backend finishes processing, the frontend dynamically displays:
+The generated story.
+Tags extracted from the videos.
+Transcripts of the audio.
+This interactive interface ensures a smooth user experience.
+
+Challenges and Solutions
+Handling Large Video Files:
+
+Videos can be large, making uploads slower. I implemented a file size limit and optimized processing by using one frame per second for tagging.
+Ensuring Accurate Transcriptions:
+
+Noisy videos can affect transcription accuracy. Using Whisper helped mitigate this with its robust audio model.
+Generating Relevant Stories:
+
+Sometimes, GPT might create a generic response. To address this, I ensured prompts included both transcriptions and tags for richer context.
+Final Output
+The tool successfully processes video uploads and generates:
+
+A story based on the prompt.
+Tags summarizing the visual elements in the videos.
+Transcripts that make the video content searchable.
+Here's how it works step-by-step:
+
+User uploads videos and enters a prompt.
+The system transcribes the videos and tags visual elements.
+It generates a narrative connecting the video content with the prompt.
+The results are displayed on the web interface.
+Technologies Used
+Python: Backend development.
+Flask: Web framework.
+Whisper: Speech-to-text transcription.
+Google Vision API: Image tagging.
+OpenAI GPT: Story generation.
+MoviePy: Video and audio processing.
+HTML, CSS, JS: Frontend development.
+Conclusion
+This assignment was an exciting opportunity to apply AI tools to solve a real-world problem. It allowed me to combine my knowledge in AI, video processing, and web development to create an innovative storytelling tool.
+
+Thank you for giving me the chance to showcase my work!
+
